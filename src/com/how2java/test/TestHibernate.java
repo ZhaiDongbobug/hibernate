@@ -57,21 +57,27 @@ public class TestHibernate {
 //			System.out.println(p.getName());
 //		}
 		
-		Set<User> users = new HashSet();
-		for(int i=0;i<3;i++) {
-			User u = new User();
-			u.setName("user" + i);
-			users.add(u);
-			s.save(u);
-		}
+//		Set<User> users = new HashSet();
+//		for(int i=0;i<3;i++) {
+//			User u = new User();
+//			u.setName("user" + i);
+//			users.add(u);
+//			s.save(u);
+//		}
+//		
+//		Product p1 = (Product) s.get(Product.class, 1);
+//		
+//		p1.setUsers(users);
+//		s.save(p1);
 		
-		Product p1 = (Product) s.get(Product.class, 1);
-		
-		p1.setUsers(users);
-		s.save(p1);
-		
-		
-		
+//		Product p = (Product) s.get(Product.class, 1);
+//		s.delete(p);
+//		
+//		Product p2 = (Product) s.get(Product.class, 2);
+//		p2.setName("长度超过30的字符串作为产品名称长度超过30的字"
+//				+ "符串作为产品名称长度超过30的字符串作为产品名称长度"
+//				+ "超过30的字符串作为产品名称");
+//		s.update(p2);
 		
 		
 		
@@ -152,6 +158,7 @@ public class TestHibernate {
 //		p.setName("iphone6");
 //		System.out.println("此时p是瞬时状态");
 //		p.setPrice(6000);
+//		p.setId(1);
 //		s.save(p);
 //		System.out.println("此时p是持久状态");
 //		for (int i=0;i<10;i++) {
