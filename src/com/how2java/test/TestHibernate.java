@@ -79,9 +79,16 @@ public class TestHibernate {
 //				+ "超过30的字符串作为产品名称");
 //		s.update(p2);
 		
+//		Product p = (Product) s.load(Product.class, 2);
+//		System.out.println("log1");
+//		System.out.println(p.getName());
+//		System.out.println("log2");
 		
+		Category p = (Category) s.get(Category.class, 1);
 		
-		
+		System.out.println("log1");
+		System.out.println(p.getProducts());
+		System.out.println("log1");
 		
 		
 		

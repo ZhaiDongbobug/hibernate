@@ -4,14 +4,14 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
  
 <hibernate-mapping package="com.how2java.pojo">
-    <class name="Category" table="category">
+    <class name="Category" table="category_">
         <id name="id" column="id">
             <generator class="native">
             </generator>
         </id>
         <property name="name" />
         
-        <set name="products" lazy="false">
+        <set name="products" lazy="true">
         	<key column="cid" not-null="false" />
         	<one-to-many class="Product" />
         </set>
