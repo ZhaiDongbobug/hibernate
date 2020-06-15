@@ -1,9 +1,26 @@
 package com.how2java.pojo;
 
+import java.util.Set;
+
 public class Product {
 	int id;
     String name;
     float price;
+    Category category;
+    Set<User> users;
+    
+    public Set<User> getUsers() {
+    	return users;
+    }
+    public void setUsers(Set<User> users) {
+    	this.users = users;
+    }
+    public Category getCategory() {
+    	return category;
+    }
+    public void setCategory(Category category) {
+    	this.category = category;
+    }
     public int getId() {
         return id;
     }
