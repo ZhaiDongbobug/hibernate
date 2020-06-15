@@ -23,6 +23,28 @@ public class TestHibernate {
 		Session s = sf.openSession();
 		s.beginTransaction();
 		
+		Category c1 = (Category) s.get(Category.class, 1);
+		System.out.println("log1");
+		Category c2 = (Category) s.get(Category.class, 1);
+		System.out.println("log2");
+		s.getTransaction().commit();
+		s.close();
+		Session s2 = sf.openSession();
+		s2.beginTransaction();
+		Category c3 = (Category) s2.get(Category.class, 1);
+		System.out.println("log3");
+		s2.getTransaction().commit();
+		s2.close();
+		//System.out.println("此时p是脱管状态");
+		sf.close();
+		
+		
+		
+		
+		
+		
+		
+		
 //		Product p = (Product) s.get(Product.class, 5);
 //		System.out.println("id=6的产品名称是" + p.getName());
 //		p.setName("iphone-modified");
@@ -98,19 +120,21 @@ public class TestHibernate {
 		
 //		Category c = (Category) s.get(Category.class, 3);
 //		s.delete(c);
-		
-		Category c = (Category) s.get(Category.class, 5);
-		
-		Product p1 = new Product();
-		p1.setName("product_501");
-		Product p2 = new Product();
-		p2.setName("product_502");
-		Product p3 = new Product();
-		p3.setName("product_503");
-		
-		c.getProducts().add(p1);
-		c.getProducts().add(p2);
-		c.getProducts().add(p3);
+//		System.out.println("log1");
+//		Category c1 = (Category) s.get(Category.class, 1);
+//		System.out.println("log2");
+//		Category c2 = (Category) s.get(Category.class, 1);
+//		System.out.println("log3");
+//		Product p1 = new Product();
+//		p1.setName("product_501");
+//		Product p2 = new Product();
+//		p2.setName("product_502");
+//		Product p3 = new Product();
+//		p3.setName("product_503");
+//		
+//		c.getProducts().add(p1);
+//		c.getProducts().add(p2);
+//		c.getProducts().add(p3);
 		
 		
 		
@@ -189,10 +213,7 @@ public class TestHibernate {
 //		}
 		
 		
-		s.getTransaction().commit();
-		s.close();
-		System.out.println("此时p是脱管状态");
-		sf.close();
+		
 	}
 
 }

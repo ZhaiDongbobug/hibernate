@@ -5,13 +5,14 @@
  
 <hibernate-mapping package="com.how2java.pojo">
     <class name="Category" table="category_">
+    	<cache usage="read-only" />
         <id name="id" column="id">
             <generator class="native">
             </generator>
         </id>
         <property name="name" />
         
-        <set name="products" cascade="save-update" lazy="false">
+        <set name="products" cascade="save-update" lazy="true">
         	<key column="cid" not-null="false" />
         	<one-to-many class="Product" />
         </set>
