@@ -39,14 +39,18 @@ public class TestHibernate {
 //			}
 //			System.out.println();
 //		}
+//		for(int i=2;i<8;i++) {
+//			Category c = new Category();
+//			c.setName("c"+i);
+//			s.save(c);
+//			Product p = (Product) s.get(Product.class, i);
+//			p.setCategory(c);
+//			s.update(p);
+//		}
 		
-//		Category c = new Category();
-//		c.setName("c1");
-//		s.save(c);
 //		
-//		Product p = (Product) s.get(Product.class, 8);
-//		p.setCategory(c);
-//		s.update(p);
+
+		
 		
 		
 		
@@ -84,19 +88,29 @@ public class TestHibernate {
 //		System.out.println(p.getName());
 //		System.out.println("log2");
 		
-		Category p = (Category) s.get(Category.class, 1);
-		
-		System.out.println("log1");
-		System.out.println(p.getProducts());
-		System.out.println("log1");
-		
-		
+//		Category p = (Category) s.get(Category.class, 1);
+//		
+//		System.out.println("log1");
+//		System.out.println(p.getProducts());
+//		System.out.println("log1");
 		
 		
 		
+//		Category c = (Category) s.get(Category.class, 3);
+//		s.delete(c);
 		
+		Category c = (Category) s.get(Category.class, 5);
 		
+		Product p1 = new Product();
+		p1.setName("product_501");
+		Product p2 = new Product();
+		p2.setName("product_502");
+		Product p3 = new Product();
+		p3.setName("product_503");
 		
+		c.getProducts().add(p1);
+		c.getProducts().add(p2);
+		c.getProducts().add(p3);
 		
 		
 		

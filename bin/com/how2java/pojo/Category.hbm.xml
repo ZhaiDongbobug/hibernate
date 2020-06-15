@@ -11,7 +11,7 @@
         </id>
         <property name="name" />
         
-        <set name="products" lazy="true">
+        <set name="products" cascade="save-update" lazy="false">
         	<key column="cid" not-null="false" />
         	<one-to-many class="Product" />
         </set>
