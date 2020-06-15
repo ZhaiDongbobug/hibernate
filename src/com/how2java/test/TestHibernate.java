@@ -23,18 +23,36 @@ public class TestHibernate {
 		Session s = sf.openSession();
 		s.beginTransaction();
 		
-		Category c1 = (Category) s.get(Category.class, 1);
-		System.out.println("log1");
-		Category c2 = (Category) s.get(Category.class, 1);
-		System.out.println("log2");
-		s.getTransaction().commit();
-		s.close();
-		Session s2 = sf.openSession();
-		s2.beginTransaction();
-		Category c3 = (Category) s2.get(Category.class, 1);
-		System.out.println("log3");
-		s2.getTransaction().commit();
-		s2.close();
+		String name = "iphone";
+		Criteria c = s.createCriteria(Product.class);
+		c.add(Restrictions.like("name", "%"+name+"%"));
+		c.setFirstResult(2);
+		c.setMaxResults(5);
+		
+		List<Product> ps = c.list();
+		for (Product p : ps) {
+			System.out.println(p.getName());
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+//		Category c1 = (Category) s.get(Category.class, 1);
+//		System.out.println("log1");
+//		Category c2 = (Category) s.get(Category.class, 1);
+//		System.out.println("log2");
+//		s.getTransaction().commit();
+//		s.close();
+//		Session s2 = sf.openSession();
+//		s2.beginTransaction();
+//		Category c3 = (Category) s2.get(Category.class, 1);
+//		System.out.println("log3");
+//		s2.getTransaction().commit();
+//		s2.close();
 		//System.out.println("此时p是脱管状态");
 		sf.close();
 		
