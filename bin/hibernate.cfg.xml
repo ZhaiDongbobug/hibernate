@@ -43,9 +43,12 @@
         <property
         name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
         
-        <mapping resource="com/how2java/pojo/Product.hbm.xml" />
+        <!-- <mapping resource="com/how2java/pojo/Product.hbm.xml" /> -->
+        <mapping class="com.how2java.pojo.Product" />
         <mapping resource="com/how2java/pojo/Category.hbm.xml" />
+        
         <mapping resource="com/how2java/pojo/User.hbm.xml" />
+    
     </session-factory>
  
 </hibernate-configuration>

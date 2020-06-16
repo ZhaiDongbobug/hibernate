@@ -26,12 +26,42 @@ public class TestHibernate {
 	
 	Session s = sf.openSession();
 	s.beginTransaction();
-	
-	s.createQuery("from Category").list();
-	
+
+	for (int i = 0; i < 10; i++) {
+		Product p = new Product();
+		p.setName("iphone" + i);
+		p.setPrice(i);
+		s.save(p);
+	}
+
 	s.getTransaction().commit();
 	s.close();
 	sf.close();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	Session s = sf.openSession();
+//	s.beginTransaction();
+//	
+//	s.createQuery("from Category").list();
+//	
+//	s.getTransaction().commit();
+//	s.close();
+//	sf.close();
 	
 	
 	

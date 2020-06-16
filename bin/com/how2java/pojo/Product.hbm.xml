@@ -10,15 +10,15 @@
             </generator>
         </id>
         <!-- version元素必须紧挨着id后面   -->
-        <version name="version" column="ver" type="int"></version>
+       <!--  <version name="version" column="ver" type="int"></version> -->
         <property name="name" />
         <property name="price" />
-        <many-to-one name="category" class="Category" column="cid" />
+        <!-- <many-to-one name="category" class="Category" column="cid" />
         
         <set name="users" table="user_product" lazy="false">
         	<key column="pid" />
         	<many-to-many column="uid" class="User" />
-        </set> 
+        </set>  -->
         
     </class>
      
