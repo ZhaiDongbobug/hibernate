@@ -5,7 +5,6 @@
  
 <hibernate-mapping package="com.how2java.pojo">
     <class name="Category" table="category_">
-    	<cache usage="read-only" />
         <id name="id" column="id">
             <generator class="native">
             </generator>
