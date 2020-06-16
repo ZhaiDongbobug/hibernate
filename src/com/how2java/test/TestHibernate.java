@@ -1,6 +1,7 @@
 package com.how2java.test;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -56,17 +57,30 @@ public class TestHibernate {
 //		t2.join();
 //		System.out.println(s1==s2);
 		
+//		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+//		//Session s1 = sf.openSession();
+//		Session s1 = sf.getCurrentSession();
+//		s1.beginTransaction();
+//		s1.get(Product.class, 5);
+//		s1.getTransaction().commit();
+//		//s1.close();
+//		sf.close();
+		
 		SessionFactory sf = new Configuration().configure().buildSessionFactory();
-		//Session s1 = sf.openSession();
-		Session s1 = sf.getCurrentSession();
-		s1.beginTransaction();
-		s1.get(Product.class, 5);
-		s1.getTransaction().commit();
-		//s1.close();
+		Session s = sf.openSession();
+		s.beginTransaction();
+		
+		String name = "iphone";
+		Query q = s.createQuery("from Product p where p.name like ?");
+		q.setString(0, "%"+name+"%");
+		Iterator<Product> it = q.iterate();
+		while(it.hasNext()) {
+			Product p = it.next();
+			System.out.println(p.getName());
+		}
+		s.beginTransaction().commit();
+		s.close();
 		sf.close();
-		
-		
-		
 		
 		
 		
