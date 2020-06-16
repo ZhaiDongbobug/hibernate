@@ -7,6 +7,13 @@ public class Product {
     String name;
     float price;
     Category category;
+    int version;
+    public int getVersion() {
+    	return version;
+    }
+    public void setVersion(int version) {
+    	this.version = version;
+    }
     Set<User> users;
     
     public Set<User> getUsers() {

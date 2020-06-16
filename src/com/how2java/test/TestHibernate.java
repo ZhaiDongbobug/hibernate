@@ -21,7 +21,46 @@ public class TestHibernate {
 //	static Session s1;
 //	static Session s2;
 	public static void main(String[] args) throws InterruptedException {
-			
+		
+	SessionFactory sf = new Configuration().configure().buildSessionFactory();
+	Session s1 = sf.openSession();
+	Session s2 = sf.openSession();
+	
+	s1.beginTransaction();
+	s2.beginTransaction();
+	
+	Product p1 = (Product) s1.get(Product.class, 2);
+	System.out.println("产品原本价格是：" + p1.getPrice());
+	
+	p1.setPrice(p1.getPrice()+1000);
+	
+	Product p2 = (Product) s2.get(Product.class, 2);
+	p2.setPrice(p2.getPrice() + 1000);
+		
+	s1.update(p1);
+	s2.update(p2);
+	
+	s1.getTransaction().commit();
+	s2.getTransaction().commit();
+		
+	Product p = (Product) s1.get(Product.class, 2);
+	
+	System.out.println("经过两次价格增加后，价格变为：" + p.getPrice());
+	
+	s1.close();
+	s2.close();
+	
+	sf.close();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 //		SessionFactory sf = new Configuration().configure().buildSessionFactory();
 //		Session s1 = sf.openSession();
 //		//s.beginTransaction();
@@ -66,21 +105,38 @@ public class TestHibernate {
 //		//s1.close();
 //		sf.close();
 		
-		SessionFactory sf = new Configuration().configure().buildSessionFactory();
-		Session s = sf.openSession();
-		s.beginTransaction();
+//		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+//		Session s = sf.openSession();
+//		//s.beginTransaction();
+//		
+//		String name = "iphone";
+//		
+//		Query q = s.createQuery("select count(*) from Product p where p.name like ?");
+//		q.setString(0, "%"+name+"%");
+//		long total = (long) q.uniqueResult();
+//		System.out.println(total);
+//		//s.getTransaction().commit();
+//		s.close();
+//		sf.close();
 		
-		String name = "iphone";
-		Query q = s.createQuery("from Product p where p.name like ?");
-		q.setString(0, "%"+name+"%");
-		Iterator<Product> it = q.iterate();
-		while(it.hasNext()) {
-			Product p = it.next();
-			System.out.println(p.getName());
-		}
-		s.beginTransaction().commit();
-		s.close();
-		sf.close();
+		
+		
+		
+		
+		
+		
+		
+//		String name = "iphone";
+//		Query q = s.createQuery("from Product p where p.name like ?");
+//		q.setString(0, "%"+name+"%");
+//		Iterator<Product> it = q.iterate();
+//		while(it.hasNext()) {
+//			Product p = it.next();
+//			System.out.println(p.getName());
+//		}
+//		s.beginTransaction().commit();
+//		s.close();
+//		sf.close();
 		
 		
 		
@@ -135,7 +191,7 @@ public class TestHibernate {
 //		s2.getTransaction().commit();
 //		s2.close();
 		//System.out.println("此时p是脱管状态");
-		sf.close();
+//		sf.close();
 		
 		
 		
