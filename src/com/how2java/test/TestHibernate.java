@@ -23,16 +23,34 @@ public class TestHibernate {
 		Session s = sf.openSession();
 		s.beginTransaction();
 		
-		String name = "iphone";
-		Criteria c = s.createCriteria(Product.class);
-		c.add(Restrictions.like("name", "%"+name+"%"));
-		c.setFirstResult(2);
-		c.setMaxResults(5);
+		Product p3 = (Product) s.get(Product.class,500);
+		System.out.println("p3="+p3);
+		Product p4 = (Product) s.load(Product.class, 500);
+		System.out.println("p3="+p4);
+		s.getTransaction().commit();
+		s.close();
+		sf.close();
 		
-		List<Product> ps = c.list();
-		for (Product p : ps) {
-			System.out.println(p.getName());
-		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//		String name = "iphone";
+//		Criteria c = s.createCriteria(Product.class);
+//		c.add(Restrictions.like("name", "%"+name+"%"));
+//		c.setFirstResult(2);
+//		c.setMaxResults(5);
+//		
+//		List<Product> ps = c.list();
+//		for (Product p : ps) {
+//			System.out.println(p.getName());
+//		}
 		
 		
 		
