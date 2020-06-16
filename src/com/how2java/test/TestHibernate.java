@@ -17,19 +17,68 @@ import com.how2java.pojo.User;
 
 public class TestHibernate {
 
-	public static void main(String[] args) {
+//	static Session s1;
+//	static Session s2;
+	public static void main(String[] args) throws InterruptedException {
 			
-		SessionFactory sf = new Configuration().configure().buildSessionFactory();
-		Session s = sf.openSession();
-		s.beginTransaction();
+//		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+//		Session s1 = sf.openSession();
+//		//s.beginTransaction();
+//		Session s2 = sf.openSession();
+//		System.out.println(s1==s2);
+//		s1.close();
+//		s2.close();
+//		sf.close();
+//		Session s1 = sf.getCurrentSession();
+//		Session s2 = sf.getCurrentSession();
+//		System.out.println(s1==s2);
+//		s1.close();
+//		//s2.close();
+//		sf.close();
 		
-		Product p3 = (Product) s.get(Product.class,500);
-		System.out.println("p3="+p3);
-		Product p4 = (Product) s.load(Product.class, 500);
-		System.out.println("p3="+p4);
-		s.getTransaction().commit();
-		s.close();
+//		final SessionFactory sf = new Configuration().configure().buildSessionFactory();
+//		
+//		Thread t1 = new Thread() {
+//			public void run() {
+//				s1 = sf.getCurrentSession();
+//			}
+//		};
+//		t1.start();
+//		
+//		Thread t2 = new Thread() {
+//			public void run() {
+//				s2 = sf.getCurrentSession();
+//			}
+//		};
+//		t2.start();
+//		
+//		t1.join();
+//		t2.join();
+//		System.out.println(s1==s2);
+		
+		SessionFactory sf = new Configuration().configure().buildSessionFactory();
+		//Session s1 = sf.openSession();
+		Session s1 = sf.getCurrentSession();
+		s1.beginTransaction();
+		s1.get(Product.class, 5);
+		s1.getTransaction().commit();
+		//s1.close();
 		sf.close();
+		
+		
+		
+		
+		
+		
+		
+		
+//		Product p3 = (Product) s.get(Product.class,500);
+//		System.out.println("p3="+p3);
+//		Product p4 = (Product) s.load(Product.class, 500);
+//		System.out.println("p3="+p4);
+//		s.getTransaction().commit();
+//		s.close();
+//		sf.close();
 		
 		
 		
